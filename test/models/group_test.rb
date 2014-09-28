@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TagsTest < ActiveSupport::TestCase
+class GroupTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
