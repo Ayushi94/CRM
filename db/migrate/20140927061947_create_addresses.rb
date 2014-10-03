@@ -4,7 +4,7 @@ class CreateAddresses < ActiveRecord::Migration
     	t.timestamps
     	t.string :line1
     	t.string :line2
-    	t.string :type
+    	t.string :address_type
     end
   end
 end

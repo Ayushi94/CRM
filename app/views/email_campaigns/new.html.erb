@@ -1,0 +1,28 @@
+<%= form_for @email_campaign, url: user_email_campaigns_path(current_user) do |f| %>
+
+<p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+<p>
+    <%= f.label :subject %><br>
+    <%= f.text_field :subject %>
+  </p>
+ 
+<p>
+    <%= f.label :text %><br>
+    <%= f.text_field :text %>
+  </p>
+
+<p>
+  
+  <%= f.select :email_type, Email::TYPES %>
+  </p>
+   
+
+ <p>
+    <%= f.submit %>
+  </p>
+
+  <% end %>

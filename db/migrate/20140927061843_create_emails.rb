@@ -3,7 +3,7 @@ class CreateEmails < ActiveRecord::Migration
     create_table :emails do |t|
     	t.timestamps
     	t.string :email_address
-    	t.string :type
+    	t.string :email_type
     end
   end
 end

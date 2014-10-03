@@ -1,4 +1,5 @@
 class Address < ActiveRecord::Base
 	belongs_to :customer
-	validates :address, :zipcode, :city, :phone, :country, presence: true
+	validates :line1, :line2, presence: true
+	TYPES = { "Residential" => 1,"Office" => 2}
 end

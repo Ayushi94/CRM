@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :users do
   	get :dashboard, on: :collection
   	resources :customers
+    resources :email_campaigns
   end
 end

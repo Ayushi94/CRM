@@ -11,21 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140928062802) do
+ActiveRecord::Schema.define(version: 20141003085351) do
 
   create_table "addresses", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "line1"
     t.string   "line2"
-    t.string   "type"
+    t.string   "address_type"
+    t.integer  "customer_id"
   end
 
   create_table "contacts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "phone"
-    t.string   "type"
+    t.string   "contact_type"
+    t.integer  "customer_id"
   end
 
   create_table "customers", force: true do |t|
@@ -33,13 +35,41 @@ ActiveRecord::Schema.define(version: 20140928062802) do
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
+    t.integer  "user_id"
+  end
+
+  create_table "delayed_jobs", force: true do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+
+  create_table "email_campaigns", force: true do |t|
+    t.string   "name"
+    t.string   "subject"
+    t.string   "text"
+    t.string   "email_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "emails", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email_address"
-    t.string   "type"
+    t.string   "email_type"
+    t.integer  "customer_id"
   end
 
   create_table "groups", force: true do |t|

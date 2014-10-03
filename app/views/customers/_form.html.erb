@@ -1,0 +1,47 @@
+<%= nested_form_for @customer, url: user_customers_path(current_user) do |f| %>
+  <p>
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
+  </p>
+ 
+  <p>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
+  </p>
+  
+
+  <h3>Emails</h3>
+  <p>
+    <%= f.fields_for :emails do |email_form| %>
+    <%= email_form.text_field :email_address, placeholder: 'Enter Email Address' %>
+    <%= email_form.select :email_type, Email::TYPES %>
+    <%= email_form.link_to_remove "Remove" %>
+    <% end %>
+  </p>
+  <%= f.link_to_add  "Add", :emails %>
+
+  <h3>Contact</h3>
+  <p>
+    <%= f.fields_for :contacts do |contact_form| %>
+    <%= contact_form.text_field :phone, placeholder: 'Enter Phone no.' %>
+    <%= contact_form.select :contact_type, Contact::TYPES %>
+    <%= contact_form.link_to_remove "Remove" %>
+    <% end %>
+  </p>
+  <%= f.link_to_add  "Add", :contacts %>
+
+  <h3>Address</h3>
+  <p>
+    <%= f.fields_for :addresses do |address_form| %>
+    <%= address_form.text_field :line1, placeholder: 'Enter line1' %>
+    <%= address_form.text_field :line2, placeholder: 'Enter line2' %>
+    <%= address_form.select :address_type, Address::TYPES %>
+    <%= address_form.link_to_remove "Remove" %>
+    <% end %>
+  </p>
+  <%= f.link_to_add  "Add", :addresses %>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

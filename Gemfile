@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 gem 'devise'
 gem "letter_opener", :group=> :development
+gem "nested_form"
+gem "delayed_job_active_record"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
