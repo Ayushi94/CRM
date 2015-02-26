@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :confirmable, :validatable
 	has_many :customers
 	has_many :email_campaigns
+	has_many :csv_file_imports
 end

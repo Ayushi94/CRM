@@ -1,22 +1,23 @@
 Hello, <%= current_user.first_name %>
-<% @customer.each do|c| %>
-	<table>
-		<tr>
-			<th>Name</th>
-		</tr>
-		<tr>
-			<td> <%= c.first_name %> </td>
-			<td> <%= c.last_name %> </td>
-<%= link_to 'Edit', edit_user_customer_path(current_user, c) %>
-<%= link_to 'Show', user_customer_path(current_user, c) %>
-<%= link_to 'Destroy', user_customer_path(current_user, c), method: :delete, data: { confirm: 'are u sure?' } %>
-<% end %>
-<%= link_to 'Add Customers', new_user_customer_path(current_user) %>
+<table>
+  <td> </td>
+  <td> </td>
+  <td> </td> 
+  <td> <% if user_signed_in? %>
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+      <% end %>
+  </td>
+  <tr><th>Name</th></tr>
+  <% @customer.each do |c| %>
+    <tr>
+      <td> <%= c.first_name %> </td>
+      <td> <%= c.last_name %> </td>
+      <td><%= link_to 'Edit', edit_user_customer_path(current_user, c) %></td>
+      <td><%= link_to 'Show', user_customer_path(current_user, c) %></td>
+      <td><%= link_to 'Destroy', user_customer_path(current_user, c), method: :delete, data: { confirm: 'are u sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to 'CSV File Import', import_user_customers_path(current_user) %><br>
+<%= link_to 'Add Customers', new_user_customer_path(current_user) %><br>
 <%= link_to 'Add Email Campaigns', new_user_email_campaign_path(current_user) %>
-<% @email_campaign.each do|e| %>
-<tr>
-<td> <%= e.name %> </td>
-<td> <%= e.subject %> </td>
-<td> <%= e.text %> </td>
-
-<% end %>

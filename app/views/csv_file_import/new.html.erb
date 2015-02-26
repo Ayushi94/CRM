@@ -1,0 +1,15 @@
+<%= form_for @csv_file_import, url: import_user_customers_path(current_user) do |f| %>
+
+<p>
+    <%= f.label :browse %><br>
+    <%= f.file_field :browse %>
+  </p>
+
+<p>
+   
+
+ <p>
+    <%= f.submit %>
+  </p>
+
+  <% end %>

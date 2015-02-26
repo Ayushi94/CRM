@@ -1,2 +1,45 @@
-<h1>Customer</h1>
-<%= render 'form' %>
+<%= nested_form_for @customer, url: user_customers_path(current_user) do |f| %>
+
+  <h3>First Name</h3>
+  <p>
+    <%= h(@customer.first_name) %>
+  </p>
+  
+  <br>
+  
+  <h3>Last Name</h3>
+  <p>
+    <%= h(@customer.last_name) %>
+  </p>
+  
+  <br>
+
+  <h3>Emails</h3>
+  <% @customer.emails.each do |email_form| %>
+    <p>
+      <%= email_form.email_address %>
+    </p>
+  <% end %>
+  
+  <br>
+  
+  <h3>Contact</h3>
+    <% @customer.contacts.each do |contact_form| %>
+      <p>
+        <%= contact_form.phone %>
+      </p>
+    <% end %>
+    
+  <br>
+
+  <h3>Address</h3>
+    <% @customer.addresses.each do |address_form| %>
+      <p>
+        <%= address_form.line1 %>
+        <%= address_form.line2 %>
+      </p>
+    <% end %>
+
+  <br>
+  <%= link_to 'Back', dashboard_users_path(current_user) %>
+<% end %>

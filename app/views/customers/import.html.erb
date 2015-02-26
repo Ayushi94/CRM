@@ -1,0 +1,15 @@
+<%= form_for :customer, url: save_import_user_customers_path(current_user) do |f| %>
+
+<p>
+    
+    <%= f.file_field :browse %>
+</p>
+
+
+   
+
+ <p>
+    <%= f.submit 'Import customers' %>
+ </p>
+
+<% end %>
