@@ -32,3 +32,4 @@ gem 'devise'
 gem "letter_opener", :group=> :development
 gem "nested_form"
 gem "delayed_job_active_record"
+gem 'bootstrap-sass', '~> 3.3.3'
