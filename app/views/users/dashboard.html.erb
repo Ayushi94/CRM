@@ -1,22 +1,26 @@
-Hello, <%= current_user.first_name %>
-<table>
-  <td> </td>
-  <td> </td>
-  <td> </td> 
-  <td> <% if user_signed_in? %>
+<h4>Hello, <%= current_user.first_name %>
+</h4>
+
+  <% if user_signed_in? %>
+  <nav>
+  <ul class="nav navbar-nav navbar-right">
         <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+        </ul>
+        </nav>
       <% end %>
-  </td>
+  <table class="table table-striped table-bordered" border="1" style="width:80%">
+
   <tr><th>Name</th></tr>
   <% @customer.each do |c| %>
     <tr>
-      <td> <%= c.first_name %> </td>
-      <td> <%= c.last_name %> </td>
-      <td><%= link_to 'Edit', edit_user_customer_path(current_user, c) %></td>
-      <td><%= link_to 'Show', user_customer_path(current_user, c) %></td>
-      <td><%= link_to 'Destroy', user_customer_path(current_user, c), method: :delete, data: { confirm: 'are u sure?' } %></td>
+      <td> <%= c.first_name %>
+       <%= c.last_name %> </td>
+      <td button class="btn btn-block btn-info" type="button"><%= link_to 'Edit', edit_user_customer_path(current_user, c) %></td button>
+      <td button class="btn btn-block btn-success" type="button"><%= link_to 'Show', user_customer_path(current_user, c) %></td button>
+      <td button class="btn btn-block btn-danger" type="button"><%= link_to 'Destroy', user_customer_path(current_user, c), method: :delete, data: { confirm: 'are u sure?' } %></td button>
     </tr>
   <% end %>
+ 
 </table>
 <%= link_to 'CSV File Import', import_user_customers_path(current_user) %><br>
 <%= link_to 'Add Customers', new_user_customer_path(current_user) %><br>
